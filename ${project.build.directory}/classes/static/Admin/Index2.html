@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Admin</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!--AngularJS-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<!--Router-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+<body class="container" ng-app="admin-app">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav ">
+				<li class="active"><a href="#!admin">Home</i></a></li>
+				<li><a href="#!product">Product </a></li>
+				<li><a href="#!category">Category</a></li>
+				<li><a href="#!authorize">Authority</a></li>
+				<li><a href="#!account">Account</a></li>
+				<li><a href="#!order">Order</a></li>
+				<li><a href="#!statistics">Report</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<li><a href="/security/logoff"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+	NDA
+		<p class="ng-view">
+	</div>
+	
+	
+	<script src="/Admin/admin-app.js"></script>
+	<script src="/Admin/Product/product-ctrl.js"></script>
+	<script src="/Admin/Category/category-ctrl.js"></script>
+	<script src="/Admin/authority/authority-ctrl.js"></script>
+	<script src="/Admin/Account/account-ctrl.js"></script>
+	<script src="/Admin/Orders/order-ctrl.js"></script>
+	<script src="/Admin/thongke/thongke.js"></script>
+</body>
+</html>

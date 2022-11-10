@@ -1,0 +1,206 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/Index :: dynamic(~{::body})}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Shop page - Organic Food Html5 Template</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+	<div class="organic_food_wrapper container " >
+		
+		<div class="shop_wrapper ptb-10">
+			<div class="container-fluid">
+				<div class="row">
+					<div>
+						<div class="tav_menu_wrapper">
+							<div class="row align-items-center">
+								<div class="col-lg-6 col-md-7 col-sm-6">
+									<div class="tab_menu shop_menu">
+										<div class="tab_menu_inner">
+											<ul class="nav" role="tablist">
+												<li><a class="active" data-toggle="tab"
+													href="#shop_active" role="tab" aria-controls="shop_active"
+													aria-selected="true"><i class="fa fa-th"
+														aria-hidden="true"></i></a></li>
+
+												<li><a data-toggle="tab" href="#featured_active"
+													role="tab" aria-controls="featured_active"
+													aria-selected="false"><i class="fa fa-list"
+														aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+										<div class="tab_menu_right">
+											<p>There are [[${items.numberOfElements}]] products.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-5 col-sm-5">
+<!-- 									<div class="Relevance"> -->
+<!-- 										<span>Sort by:</span> -->
+<!-- 										<div class="dropdown dropdown-shop"> -->
+<!-- 											<select name="drop" id="dropdown"> -->
+												
+<!-- 											</select> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+									<div class="Relevance">
+										<span>Sort by:</span>
+										<div class="dropdown">
+											<button class="btn btn-default dropdown-toggle" type="button"
+												data-toggle="dropdown">
+												Tutorials <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li th:each="c:${cates}"><a
+													th:href="@{|/product/list?=0&cid=${c.id}|}">[[${c.name}]]</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab_product_wrapper">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="shop_active">
+									<div class="row">
+										<div th:each="p:${items}"
+											class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+											<div class="single__product">
+												<div class="single_product__inner">
+													<span class="new_badge">new</span> <span
+														class="discount_price">-5%</span>
+													<div class="product_img">
+														<a th:href="@{|/product/detail/${p.id}|}"> <img
+															th:src="@{|/images/${p.image}|}" style="width: 100%;height: 250px;" alt="">
+														</a>
+
+													</div>
+													<div class="product__content text-center">
+														<div class="produc_desc_info">
+															<div class="product_title">
+																<h4>
+																	<a th:href="@{|/product/detail/${p.id}|}">
+																		<p th:text="${p.name}"></p>
+																	</a>
+																</h4>
+															</div>
+															<div class="product_price">
+																<p >$[[${p.price}]]</p>
+															</div>
+														</div>
+														<div class="product__hover">
+															<ul>
+																<li><a href="" th:attr="ng-click=@{|cart.add(${p.id})|}"><i
+																		class="ion-android-cart"></i></a></li>
+																<li><a class="cart-fore" href="#"
+																	data-toggle="modal" data-target="#my_modal"
+																	title="Quick View"><i class="ion-android-open"></i></a></li>
+
+																<li><a href="product-details.html"><i
+																		class="ion-clipboard"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="featured_active" role="tabpanel">
+									<div class="tab_product_bottom_wrapper" th:each="p:${items}">
+										<div class="row">
+											<div class="col-lg-4 col-md-5 col-sm-5">
+												<div class="single_product__inner inner_shop">
+													<span class="new_badge">new</span> <span
+														class="discount_price">-5%</span>
+													<div class="product_img">
+														<a th:href="@{|/product/detail/${p.id}|}"> <img
+															th:src="@{|/images/${p.image}|}" alt="">
+														</a>
+													</div>
+
+												</div>
+											</div>
+											<div class="col-lg-8 col-md-7 col-sm-7">
+												<div class="product__content text-left">
+													<div class="produc_desc_info">
+														<div class="product_title title_shop">
+															<h4>
+																<a th:href="@{|/product/detail/${p.id}|}"><div
+																		th:text="${p.name}"></div></a>
+															</h4>
+														</div>
+														<div class="product_price price_shop">
+															<p th:text="${p.price}"></p>
+														</div>
+
+													</div>
+													<div class="product__hover hover_shop">
+														<div class="product_cart_icone">
+															<ul>
+																<li><a th:attr="ng-click=@{|cart.add(${p.id})|}"><i
+																		class="ion-android-cart"></i></a></li>
+																<li><a class="cart-fore" href="#"
+																	data-toggle="modal" data-target="#my_modal"
+																	title="Quick View"><i class="ion-android-open"></i></a></li>
+																<li><a href="product-details.html"><i
+																		class="ion-clipboard"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="shop_pagination">
+							<div class="row align-items-center">
+								<div class="col-lg-4 col-md-6 col-sm-6">
+									<div class="total_item_shop">Showing [[${items.number}]]
+										of [[${items.totalPages-1}]]</div>
+								</div>
+								<div class="col-lg-6 offset-lg-2 col-md-6 col-sm-6 container">
+									<div class="page_list_clearfix text-center">
+										<ul>
+<!-- 											<li class="prev"><a th:if="*{items.number > 0 }" -->
+<!-- 												th:href="@{|/product/list?p=${items.number-1}&cid=${session.cid}|}"><i -->
+<!-- 													class="zmdi zmdi-chevron-left"></i> Previous</a> <a -->
+<!-- 												th:if="*{items.number == 0 }" -->
+<!-- 												th:href="@{|/product/list?p=${items.totalPages}|}"><i -->
+<!-- 													class="zmdi zmdi-chevron-left"></i> Previous </a></li> -->
+
+
+											<li th:if="*{items.number >0}"><a
+												th:href="@{|/product/kay?p=${items.number-1}&keywords=${session.keywords}|}">[[${items.number-1}]]</a></li>
+											<li class="current_page"><a href="#">[[${items.number}]]</a></li>
+											<li><a th:if="*{items.number < items.totalPages-1}"
+												th:href="@{|/product/kay?p=${items.number+1}&keywords=${session.keywords}|}">[[${items.number+1}]]</a></li>
+
+
+<!-- 											<li class="next"><a -->
+<!-- 												th:if="*{items.number < items.totalPages-1}" -->
+<!-- 												th:href="@{|/product/list?p=${items.number+1}&cid=${session.cid}|}"> Next <i -->
+<!-- 													class="zmdi zmdi-chevron-right"></i></a> <a -->
+<!-- 												th:if="*{items.number >= items.totalPages-1}" -->
+<!-- 												th:href="@{|/product/list?p=0&cid=${session.null}|}"> Next <i -->
+<!-- 													class="zmdi zmdi-chevron-right"></i></a></li> -->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

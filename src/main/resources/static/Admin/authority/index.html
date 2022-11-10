@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Authority</title>
+</head>
+<body>
+	<div class="container">
+		<h2>Bordered Table</h2>
+<!-- 		<table class="table table-bordered"> -->
+<!-- 			<thead class="bg-success" style="font-variant:small-caps;"> -->
+<!-- 				<tr> -->
+<!-- 					<th>Username</th> -->
+<!-- 					<th>Fullname</th> -->
+<!-- 					<th ng-repeat="role in roles" class="text-center">{{role.name}}</th> -->
+<!-- 				</tr> -->
+<!-- 			</thead> -->
+<!-- 			<tbody> -->
+<!-- 				<tr ng-repeat="acc in admins"> -->
+<!-- 				    <td>{{acc.username}}</td> -->
+<!-- 					<td>{{acc.fullname}}</td> -->
+<!-- 					<th ng-repeat="role in roles" class="text-center"> -->
+<!-- 					   <input ng-checked="authority_of(acc, role)" ng-click="authority_changed(acc, role)" type="checkbox"> -->
+<!-- 					</th> -->
+<!-- 				</tr> -->
+<!-- 			</tbody> -->
+<!-- 		</table> -->
+
+
+
+		<table class="table table-bordered">
+			<thead class="bg-success" style="font-variant: small-caps;">
+				<tr>
+					<th>Username</th>
+					<th>Fullname</th>
+					<th ng-repeat="role in db.roles" class="text-center">{{role.name}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="acc in db.accounts">
+					<td>{{acc.username}}</td>
+					<td>{{acc.fullname}}</td>
+					<th ng-repeat="role in db.roles" class="text-center"><input
+						ng-checked="index_of(acc.username, role.id) >=0"
+						ng-click="update(acc.username, role.id)" type="checkbox"></th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

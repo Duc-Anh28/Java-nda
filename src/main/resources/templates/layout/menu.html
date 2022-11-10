@@ -1,0 +1,150 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Organicfood - eCommerce Bootstrap4 Template</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+		<div class="header_top_bar top_bar_two">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="header_top_inner">
+							<div class="phone">
+								<p>
+									<i class="ion-clock"></i>Ordered before 17:30, shipped today -
+									Support: (012) 800 456 789
+								</p>
+							</div>
+							<div class="header_top_right">
+								<ul class="header_top_right_inner">
+									<li class="language_wrapper"><a href="#"> <img
+											src="/assets/img/1.jpg" alt=""> <span
+											class="expand-more">English</span> <i
+											class="fa fa-angle-down"></i>
+									</a>
+										<ul class="language__name">
+											<li><a href="#"><img src="/assets/img/1.jpg"
+													alt=""><span>English</span></a></li>
+											<li><a href="#"><img
+													src="/assets/img/banner/frances2.jpg" alt=""><span>Français</span></a></li>
+										</ul></li>
+									<li class="language_wrapper_one"><a href="#"> <span
+											class="expand-more _gray-darker">USD $</span> <i
+											class="fa fa-angle-down"></i>
+									</a>
+										<ul class="currency__name">
+											<li><a href="#">EUR €</a></li>
+											<li><a th:href="@{/admin}">USD $</a></li>
+										</ul></li>
+									<li class="language_wrapper_two"><a href="#"> <span>My
+												Account <i class="fa fa-angle-down"></i>
+										</span>
+									</a>
+										<ul class="account__name">
+											<li><a th:href="@{/account/index}">My account</a></li>
+											<li><a th:href="@{/login/form}">Sign in</a></li>
+										</ul></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- header top  end -->
+
+		<!-- header middel area start -->
+		<div class="header_middle middle-two">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="header_middle_wrapper">
+							<div class="header_middle_inner middel_two">
+								<div class="search_box search_box_two ">
+									<div class="search_inner search_two">
+										<form th:action="@{/product/kay}" method="post">
+											<input type="text" name="keywords" th:value="${session.keywords}" placeholder="Search our catalog">
+											<button type="submit">
+												<i class="ion-ios-search"></i>
+											</button>
+										</form>
+									</div>
+								</div>
+<!-- 								<div class="logo logo_two"> -->
+<!-- 									<a th:href="@{/home/index}"> -->
+<!-- 										<h3>NDA</h3> -->
+<!-- 									</a> -->
+
+<!-- 								</div> -->
+								<div class="mini__cart minicart_two">
+									<div class="mini_cart_inner minicart_inner_two">
+										<div class="cart_icon">
+											<a href="#"> <span class="cart_icon_inner"> <i
+													class="ion-android-cart"></i> <span class="cart_count">{{cart.count}}</span>
+											</span> <span class="item_total">{{cart.amount | number:2}}</span>
+											</a>
+										</div>
+										<!--Mini Cart Box-->
+										<div class="mini_cart_box cart_box_two mini_cart_two">
+											<div class="mini_cart_item" ng-repeat="item in cart.items">
+												<div class="mini_cart_img">
+													<a href="#"> <img src="/images/{{item.image}}" alt="">
+														<span class="cart_count">{{item.qty}}</span>
+													</a>
+												</div>
+												<div class="cart_info cart_info_two">
+													<h5>
+														<a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a>
+													</h5>
+													<span class="cart_price">${{item.price}}</span>
+												</div>
+												<div class="cart_remove">
+													<a href="" ng-click="cart.remove(item.id)"><i
+														class="zmdi zmdi-delete"></i></a>
+												</div>
+											</div>
+											<div class="min_cart_checkout checkoyt_two">
+												<a th:href="@{/product/cart}">Checkout</a>
+											</div>
+										</div>
+										<!--Mini Cart Box End -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- header middel area end -->
+		<!--Header start-->
+		<header class="header header_bottm bottom_two sticky-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 text-center">
+						<div class="main_menu_inner">
+							<div class="menu menu_two">
+								<nav>
+									<ul>
+										<li class="active"><a th:href="@{/product/list}">Home</i></a></li>
+										<li><a th:href="@{/product/cart}">Cart </a></li>
+										<li><a th:href="@{/order/list}">Orders</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--Header end-->
+	</div>
+
+</body>
+</html>

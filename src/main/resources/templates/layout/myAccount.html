@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/Index :: dynamic(~{::body})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container ptb-50 col-lg-10 col-md-6">
+		<div class="account-dashboard">
+			<form action="/account/save" method="post" th:object="${account}">
+			<div class="row" >
+				<div class="col-sm-12 col-md-3 col-lg-3">
+					<a href=""><img alt="" th:src="@{|/images/*{photo}|}"
+						style="width: 250px; height: 250px;"> </a>
+				</div>
+				<div class="col-sm-12 col-md-9 col-lg-9">
+					<h3>Account details</h3>
+					<div class="login">
+						<div class="login-form-container">
+							<div class="account-login-form">								
+									<label>username</label> 
+									<input type="text" name="username" th:field="*{Username}"> 
+									<label>password</label> 
+									<input type="text" name="password" th:field="*{password}"> 
+									<label>fullname</label>
+									<input type="text" name="fullname" th:field="*{fullname}">
+									<label>email</label> 
+									<input type="text" name="email" th:field="*{email}"> 
+									<label>photo</label> 
+									<input type="file" name="">														
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="buttons-carts">
+				   <a href="">Cart </a>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	
+	<script src="/Js/accounts.js"></script>
+</body>
+</html>

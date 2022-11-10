@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="panel panel-default">
+			<input type="text" [(ngModel)]="keyword" id="keyword" name="keyword" value=""  ng-keyup="timKiem()"/>
+<!-- 			<button  ng-click="timKiem()"  type="button">Tìm</button> -->
+		
+
+		<div  ng-repeat="c in cates">
+			<input type="radio" name="rdoResult" ng-model="value" ng-value="c.id" ng-click="newValue(value)">{{c.name}}
+		</div>
+
+		<div class="form-group" th:each="c:${cates}">
+			<input ng-model="result" ng-value="{{cates.valued}}" type="radio"
+				name="rdoResult" ng-click='newValue(value)'>NDA
+		</div>
+		<div class="panel-heading">Product</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th><a href="" ng-click="sapXep(id)">Id</a></th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Create Date</th>
+					<th>Image</th>
+					<th>Category</th>
+					<th>Availabe</th>
+				</tr>
+			</thead>
+			<tbody>
+			    
+				<tr ng-repeat="item in pager.items">	
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price | number :2}}</td>
+					<td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
+					<td><img src="/images/{{item.image}}" style="width: 50px;height: 45px" alt=""> {{item.image}}</td>
+					<td>{{item.category.name}}</td>
+					<td>{{item.available? 'Yes':'No'}}</td>
+					<td>
+						<div class="btn-group btn-group-xs">
+							<button ng-click="edit(item)"
+								class="btn btn-warning glyphicon glyphicon-edit"></button>
+							<button ng-click="delete(item)"
+								class="btn btn-danger glyphicon glyphicon-trash"></button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="panel-footer text-center">
+			<button ng-click="pager.first()" type="button" class="btn btn-danger">
+				<b class="glyphicon glyphicon-hand-up"></b> 
+			</button>
+			<button ng-click="pager.prev()" type="button" class="btn btn-primary">
+				<b class="glyphicon glyphicon-hand-left"></b>
+			</button>
+			<button ng-click="" type="button" class="btn btn-success">
+				{{pager.page + 1}} of {{pager.count}}
+			</button>
+			<button ng-click="pager.next()" type="button" class="btn btn-primary">
+				<b class="glyphicon glyphicon-hand-right"></b>
+			</button>
+			<button ng-click="pager.last()" type="button" class="btn btn-danger">
+				<b class="glyphicon glyphicon-hand-down"></b>
+			</button>
+		</div>
+	</div>
+</body>
+</html>
